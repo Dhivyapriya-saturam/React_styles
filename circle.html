@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STYLECIRCLE</title>
+</head>
+<body>
+<div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <style>
+    .circle {
+      width:200px;
+      height:200px;
+      border-radius: 50%;
+    }
+    .circle--large {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    .circle--medium {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .circle--small {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+  </style>
+  <script type="text/babel">
+    function Circle({style, size, ...rest}) {
+      const sizeClassName = size ? `circle--${size}` : ''
+      return (
+        <div
+          className={`circle ${sizeClassName}`}
+          style={{fontStyle: 'italic', ...style}}
+          {...rest}
+        />
+      )
+    }
+
+    const element = (
+      <div>
+        <Circle size="small" style={{backgroundColor: 'lightblue'}}>
+          small lightblue circle
+        </Circle>
+        <Circle size="medium" style={{backgroundColor: 'pink'}}>
+          medium pink circle
+        </Circle>
+        <Circle size="large" style={{backgroundColor: 'orange'}}>
+          large orange circle
+        </Circle>
+        <Circle>sizeless circle</Circle>
+      </div>
+    )
+
+    ReactDOM.render(element, document.getElementById('root'))
+  </script>
+</body>
+</html>
